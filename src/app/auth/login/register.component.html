@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <mat-card>
+        <img src="../../assets/img/logo.png">
+        <mat-card-content>
+            <br>
+            <h2>Registrate Ahora</h2>
+            <form class="form">
+                <div>
+                    <mat-form-field class="full-width">
+                        <mat-label>Nombre</mat-label>
+                        <input matInput placeholder="Ingrese Nombre">
+                    </mat-form-field>
+                </div>
+                <mat-form-field class="full-width">
+                    <mat-label>Correo</mat-label>
+                    <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" placeholder="Ejemplo. pat@ejemplo.com">
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Por favor ingrese un correo valido
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Correo es <strong>requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                </mat-form-field>
+                <div>
+                    <mat-form-field class="full-width">
+                        <mat-label>Confirmar Contraseña</mat-label>
+                        <input matInput [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        </button>
+                    </mat-form-field>
+                </div>
+                <div>
+                    <button class="btn" mat-raised-button color="primary">Registrarse</button>
+                </div>
+                <br>
+                <div style="text-align: center;">
+                    Ya tienes una cuenta? <a routerLink="/login" style="cursor: pointer;"><b>Ingresa Ahora</b></a>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

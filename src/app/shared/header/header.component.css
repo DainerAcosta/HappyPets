@@ -1,0 +1,9 @@
+ul li {
+    list-style: none;
+}
+
+img {
+    width: 4.5%;
+    display: block;
+    margin: auto;
+}

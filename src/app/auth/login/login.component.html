@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <mat-card>
+        <img src="../../assets/img/logo.png">
+        <mat-card-content>
+            <form class="form">
+                <mat-form-field class="full-width">
+                    <mat-label>Correo</mat-label>
+                    <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher" placeholder="Ejemplo. pat@ejemplo.com">
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Por favor ingrese un correo valido
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Correo es <strong>requerido</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                </mat-form-field>
+                <div>
+                    <button routerLink="/dashboard" class="btn" mat-raised-button color="primary">Ingresar</button>
+                </div>
+                <br>
+                <div>
+                    <button class="btnGoogle" mat-raised-button color="warn"><mat-icon>g_translate</mat-icon></button>
+                </div>
+                <br>
+                <div style="text-align: center;">
+                    No tienes una cuenta? <a routerLink="/register" style="cursor: pointer;"><b>Crear Cuenta</b></a>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
